@@ -24,7 +24,7 @@ $hook(void, Player, update, World* world, double dt, EntityPlayer* entityPlayer)
 $hook(void, Player, updatePos, World* world, double dt)
 {
 	if (self != &fdm::StateGame::instanceObj->player) return;
-	if (!(BlockInfo::TYPE)world->getBlock(Player::pos + Player::vel*dt)==BlockInfo::AIR  && ((BlockInfo::TYPE)world->getBlock(Player::pos + Player::vel*dt + glm::vec(0,1,0,0)))==BlockInfo::AIR) {
+	if (!(BlockInfo::TYPE)world->getBlock(Player::pos + Player::vel*dt)==BlockInfo::AIR  && ((BlockInfo::TYPE)world->getBlock(Player::pos + Player::vel*dt + glm::vec<0,1,0,0>))==BlockInfo::AIR) {
 		Player::pos.y += 1;
 
 	}
