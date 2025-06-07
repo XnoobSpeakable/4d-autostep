@@ -21,7 +21,7 @@ $hook(void, Player, updatePos, World* world, double dt)
 	bool isNextDiUpBlockSolid = BlockInfo::Blocks.at(world->getBlock(nextDiUpPos)).solid; 
     // also check if the upper block is solid, not air, so that you can step on blocks even if there are bushes on it
 
-    if ( isNextBlockSolid && !isNextUpBlockSolid && !isNextDiUpBlockSolid && self.touchingGround ) self->pos.y += 1;
+    if ( isNextBlockSolid && !isNextUpBlockSolid && !isNextDiUpBlockSolid ) self->pos.y += 1;
     
     original(self, world, dt);
 }
