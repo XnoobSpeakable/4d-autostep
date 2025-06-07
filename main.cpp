@@ -7,7 +7,7 @@ using namespace fdm;
 // Initialize the DLLMain
 initDLL
 
-
+//please build githubaaaaaaa
 $hook(void, Player, updatePos, World* world, double dt)
 {
 	if (self != &fdm::StateGame::instanceObj.player) return;
