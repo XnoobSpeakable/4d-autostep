@@ -7,15 +7,22 @@ using namespace fdm;
 // Initialize the DLLMain
 initDLL
 
-//please build githubaaaaaaa
+//ZiHEd made this lol
 $hook(void, Player, updatePos, World* world, double dt)
 {
-	if (self != &fdm::StateGame::instanceObj.player) return;
-	if (BlockInfo::Blocks.at(world->getBlock(self->pos + self->vel*(float)dt)).solid  && ((BlockInfo::TYPE)world->getBlock(self->pos + self->vel*(float)dt + glm::vec4{0,1,0,0}))==BlockInfo::AIR) {
-		self->pos.y += 1;
+    if (self != &fdm::StateGame::instanceObj.player) return;
 
-	}
-	original(self, world, dt);
+    glm::vec4 nextPos = self->pos + self->vel*(float)dt + glm::vec4{0,0.001f,0,0}; // optional - add 0.001f just in case, floats can be funny
+    glm::vec4 nextUpPos = nextPos + glm::vec4(0,1,0,0);
+
+    bool isNextBlockSolid = BlockInfo::Blocks.at(world->getBlock(nextPos)).solid;
+    bool isNextUpBlockSolid = BlockInfo::Blocks.at(world->getBlock(nextUpPos)).solid; 
+    // also check if the upper block is solid, not air, so that you can step on blocks even if there are bushes on it
+
+    if ( isNextBlockSolid && !isNextUpBlockSolid)
+        self->pos.y += 1;
+    
+    original(self, world, dt);
 }
 
 
