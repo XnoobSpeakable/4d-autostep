@@ -1,7 +1,7 @@
 {
-  id: "tr1ngledev.4dmod-example",
-  name: "4DMod Example",
-  author: "Tr1NgleDev",
+  id: "xnoobspeakable.autostep",
+  name: "Autostep",
+  author: "XnoobSpeakable",
   description: "An example mod",
   version: "1.0",
   gameVersion: "0.2.1.4",
