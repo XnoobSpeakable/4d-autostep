@@ -17,7 +17,7 @@ $hook(void, StateGame, init, StateManager& s)
 $hook(void, Player, update, World* world, double dt, EntityPlayer* entityPlayer)
 {
 	// Your code that runs every frame here (it only calls when you play in world, because its Player's function)
-
+	if (self != &fdm::StateGame::instanceObj->player) return;
 	original(self, world, dt, entityPlayer);
 }
 
