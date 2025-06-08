@@ -6,3 +6,4 @@ update4dmh_push.bat
 out/*
 *.o
 packages
+build.sh
