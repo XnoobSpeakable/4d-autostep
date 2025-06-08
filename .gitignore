@@ -7,3 +7,5 @@ out/*
 *.o
 packages
 build.sh
+build
+CMakeLists.txt
