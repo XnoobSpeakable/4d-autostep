@@ -62,8 +62,59 @@ $hook(void, Player, updatePos, World* world, double dt)
  
 	return original(self, world, dt);
 }
+//attempting to steal code to add settings, i will change this and do stuff to it
+/*
+using namespace fdm::gui;
 
+Text autostepTitle;
+CheckBox autostepCB;
 
+$hook(void, StateSettings, init, StateManager& s)
+{
+    original(self, s);
+
+    waypointsTitle = Text{};
+    waypointsTitle.setText("Waypoints:");
+    waypointsTitle.alignX(ALIGN_CENTER_X);
+    waypointsTitle.offsetY(self->skinsCheckBox.yOffset + 75);
+    waypointsTitle.size = 2;
+    self->mainContentBox.addElement(&waypointsTitle);
+
+    showWaypointsCB = CheckBox{};
+    showWaypointsCB.text = "Display Waypoints";
+    showWaypointsCB.alignX(ALIGN_CENTER_X);
+    showWaypointsCB.offsetY(waypointsTitle.yOffset + 75);
+    showWaypointsCB.checked = StateWaypointsMenu::showWaypoints;
+    showWaypointsCB.callback = showWaypointsCBCallback;
+    self->mainContentBox.addElement(&showWaypointsCB);
+}
+
+$hook(void, StateSettings, load, GLFWwindow* window)
+{
+    original(self, window);
+
+    std::ifstream settingsFile("settings.json");
+    if (!settingsFile.is_open()) return;
+    nlohmann::json settings = nlohmann::json::parse(settingsFile);
+    settingsFile.close();
+
+    if (!settings.contains("showWaypoints") || !settings["showWaypoints"].is_boolean())
+        settings["showWaypoints"] = true;
+    StateWaypointsMenu::showWaypoints = settings["showWaypoints"];
+
+    if (!settings.contains("showWaypointCoords") || !settings["showWaypointCoords"].is_boolean())
+        settings["showWaypointCoords"] = true;
+    StateWaypointsMenu::showCoords = settings["showWaypointCoords"];
+
+    if (!settings.contains("maxScale") || !settings["maxScale"].is_number_float())
+        settings["maxScale"] = 1.5f;
+    StateWaypointsMenu::maxScale = settings["maxScale"];
+
+    if (!settings.contains("maxScaleDistance") || !settings["maxScaleDistance"].is_number_float())
+        settings["maxScaleDistance"] = 100.f;
+    StateWaypointsMenu::maxScaleDistance = settings["maxScaleDistance"];
+}
+*/
 
 $hook(void, StateIntro, init, StateManager& s)
 {
